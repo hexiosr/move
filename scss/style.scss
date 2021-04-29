@@ -1,0 +1,92 @@
+$colors-list: blue purple orange pink gray teal;
+$card-width: 8em;
+$card-height: 6em;
+$card-spacing: 1em;
+$card-text-color: white;
+
+$color-background: #333;
+$color-container: white;
+$color-text: white;
+$color-title: #0ca;
+
+* {box-sizing: border-box }
+
+body {
+  background: $color-background;
+  color: $color-text;
+  margin: 0;
+}
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  margin: 2em 0;
+  text-align: center;
+  flex: none;
+}
+
+h1 {
+  color: $color-title;
+  margin: 0;
+  margin-bottom: .5em;
+}
+
+.container {
+  background: $color-container;
+  flex: auto;
+  position: relative;
+  
+  &.dragging {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+}
+
+.card {
+  align-items: center;
+  color: $card-text-color;
+  display: flex;
+  flex: none;
+  height: $card-height;
+  justify-content: center;
+  position: absolute;
+  top: $card-spacing;
+  width: $card-width;
+  
+  @each $current-color in $colors-list {  
+    $i: index($colors-list, $current-color) - 1;
+
+    &.#{$current-color} { 
+      background: $current-color;
+      left: $i * ($card-width + $card-spacing) + $card-spacing;
+    }
+  }
+ 
+  &:hover {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+  }
+  
+  &.dragging {
+    box-shadow: 2px 5px 10px rgba(0,0,0,.5);
+    pointer-events: none;
+  }
+  
+  &.dropped {
+    box-shadow: 2px 5px 10px rgba(0,0,0,.5);
+  }
+}
+
+// Drop 'n Stack
+.container.dragging .card:hover {
+  outline: dashed 2px black;
+  outline-offset: 4px;
+}

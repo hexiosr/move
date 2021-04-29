@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #333;
+  color: white;
+  margin: 0;
+}
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  margin: 2em 0;
+  text-align: center;
+  flex: none;
+}
+
+.container {
+  background: #565555;
+  flex: auto;
+  position: relative;
+}
+
+.card {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex: none;
+  height: 8em;
+  justify-content: center;
+  position: absolute;
+  top: 1em;
+  width: 8em;
+}
+.card.a {
+  left: 1em;
+}
+.card.b {
+  left: 10em;
+}
+.card.c {
+  left: 19em;
+}
+.card.d {
+  left: 28em;
+}
+.card.e {
+  left: 37em;
+}
+.card.f {
+  left: 46em;
+}
+.card.g {
+  left: 55em;
+}
+.card.h {
+  left: 64em;
+}
+.card.i {
+  left: 73em;
+}
+.card.dragging {
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+.card.dropped {
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container.dragging .card:hover {
+  outline: dashed 2px black;
+  outline-offset: 4px;
+}
